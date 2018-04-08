@@ -1,0 +1,51 @@
+<div class="form-group">
+    <label>Product Pic</label>
+    <input class="form-control" [(ngModel)]="product_pic">
+    <br>
+    <img *ngIf="product_pic" [src]="product_pic" width=100 height="100">
+  </div>
+
+<div class="form-group">
+  <label>Product Name</label>
+  <input class="form-control" [(ngModel)]="product_name">
+</div>
+
+<div class="form-group">
+  <label>Product Cost</label>
+  <input class="form-control" [(ngModel)]="product_cost">
+</div>
+
+<div class="form-group">
+  <button *ngIf="btn_stt" class="btn btn-primary" (click)="saveProduct()">Save Product</button>
+  <button *ngIf="!btn_stt" class="btn btn-primary" (click)="updateProduct()">Update Product</button>
+</div>
+
+<hr>
+
+<table class="table">
+  <th>Image</th>
+  <th>Name</th>
+  <th>Cost</th>
+  <th>Action</th>
+  <tr *ngFor="let x of products">
+    <td>
+      
+        <img *ngIf="x.record.pic" [src]="x.record.pic" width=100 height="100">
+        <img *ngIf="!x.record.pic" src="/assets/images/no.jpeg" width=100 height="100">
+    </td>
+    <td>{{x.record.name}}</td>
+    <td>{{x.record.cost}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteRecord(x.key)">delete</button>
+      <button class="btn btn-primary" (click)="editProduct(x)">
+        edit
+      </button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
